@@ -1,9 +1,9 @@
 {
   "name": "@ittybit/sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ittybit interaction api",
   "main": "index.js",
-  “files”: [“lib/**/*”],
+  "files": ["lib/**/*"],
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
