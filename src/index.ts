@@ -1,6 +1,5 @@
 export class IttybitSDK {
-    
-    constructor() {
-        console.log("Starting")
-    }
+  constructor() {
+    console.log('Starting');
+  }
 }
