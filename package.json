@@ -1,0 +1,24 @@
+{
+  "name": "ittybit",
+  "version": "0.0.1",
+  "description": "Ittybit interaction api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ittybit/ittybit-node-sdk.git"
+  },
+  "keywords": [
+    "ittybit",
+    "video",
+    "api"
+  ],
+  "author": "Ittybit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ittybit/ittybit-node-sdk/issues"
+  },
+  "homepage": "https://github.com/ittybit/ittybit-node-sdk#readme"
+}
