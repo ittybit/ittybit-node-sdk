@@ -12,7 +12,7 @@ Simple library for interacting with the Ittybit API
 ---
 All usage is secured by the `ittybit-token` which is available to generate from the ittybit console [click here to sign in](https://ittybit.com)
 
-```
+```js
 const { Ittybit } = require('@ittybit/sdk');
 
 const ibit = new Ittybit({token: 'JWT'});
