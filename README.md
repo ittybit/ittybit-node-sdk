@@ -1,5 +1,5 @@
 
-![Ittybit Logo](http://ittybit.com/img/logo.svg)
+![Ittybit Logo](https://storage.googleapis.com/ittybit.dev/ittybit_logo_light_df8a23a33f/ittybit_logo_light_df8a23a33f.svg)
 
 Simple library for interacting with the Ittybit API
 
