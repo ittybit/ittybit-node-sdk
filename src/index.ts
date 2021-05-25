@@ -37,7 +37,7 @@ export class Ittybit {
   }
 
   // Headers
-  private async request(endpoint: string, method: string, content: any = null, contentType = "application/json") {
+  private async request(endpoint: string, method: string, content: any = null, contentType = 'application/json') {
     return new Promise(async (a, r) => {
       const opts = {
         host: this.apiurl,
@@ -45,19 +45,19 @@ export class Ittybit {
         method: `${method}`,
         path: endpoint,
         headers: {
-          "content-type": contentType,
+          'content-type': contentType,
           Authorization: `Bearer ${this.config.token}`,
         },
         body: null,
-        formData: null
+        formData: null,
       };
 
-      if(content) {
-        opts.body = content
+      if (content) {
+        opts.body = content;
       }
 
-      if(contentType === "multipart/form-data; boundary=xxxxxxxxxx") {
-        opts.formData = content
+      if (contentType === 'multipart/form-data; boundary=xxxxxxxxxx') {
+        opts.formData = content;
       }
 
       let data: any = '';
@@ -106,39 +106,37 @@ export class Ittybit {
   }
 
   private async upload(endpoint: string, file: any, name: string) {
-
-    return new Promise((a,r) => {
-
+    return new Promise((a, r) => {
       const formData = new FormData();
 
-      const httpsRequest = https.request({
-        host: this.apiurl,
-        port: this.apiport,
-        path: endpoint,
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${this.config.token}`,
-          ...formData.getHeaders()
-        }
-      }, (resulting) => {
-        resulting.on('data', data => {
-          const parsedData = JSON.parse(data);
-          if(parsedData.meta.status === 200) {
-            return a(parsedData.data);
-          } else r(parsedData.error);
+      const httpsRequest = https.request(
+        {
+          host: this.apiurl,
+          port: this.apiport,
+          path: endpoint,
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${this.config.token}`,
+            ...formData.getHeaders(),
+          },
+        },
+        (resulting) => {
+          resulting.on('data', (data) => {
+            const parsedData = JSON.parse(data);
+            if (parsedData.meta.status === 200) {
+              return a(parsedData.data);
+            } else r(parsedData.error);
+          });
+        },
+      );
 
-        });
-      })
-
-      httpsRequest.on('error', e => {
+      httpsRequest.on('error', (e) => {
         console.log(e);
       });
 
       formData.append(name, fs.createReadStream(file));
       formData.pipe(httpsRequest);
-
     });
-
   }
 
   // private post() {}
@@ -152,25 +150,24 @@ export class Ittybit {
   }
 
   async uploadImage(pathToImage: string) {
-
     try {
-      const uploadImage = await this.upload(this.endpoint.image.upload, pathToImage, "image") as any;
+      const uploadImage = (await this.upload(this.endpoint.image.upload, pathToImage, 'image')) as any;
       return uploadImage.id;
-    } catch(e) {
+    } catch (e) {
       throw new Error(e);
     }
   }
 
   async getImage(id: string) {
     const image: any = await this.get(this.endpoint.image.get(id));
-    if(image.code === 200) return image.payload.data;
+    if (image.code === 200) return image.payload.data;
     else throw new Error(image.payload.error);
   }
 
   async deleteImage(id: string) {
     const deleteImage: any = await this.delete(this.endpoint.image.get(id));
 
-    if(deleteImage.code === 200) return deleteImage.payload.data;
+    if (deleteImage.code === 200) return deleteImage.payload.data;
     else throw new Error(deleteImage.payload.error);
   }
 
@@ -188,11 +185,10 @@ export class Ittybit {
   }
 
   async uploadVideo(pathToVideo: string) {
-
     try {
-      const uploadVideo = await this.upload(this.endpoint.video.upload, pathToVideo, "video") as any;
-      return uploadVideo.video_id
-    } catch(e) {
+      const uploadVideo = (await this.upload(this.endpoint.video.upload, pathToVideo, 'video')) as any;
+      return uploadVideo.video_id;
+    } catch (e) {
       throw new Error(e);
     }
   }

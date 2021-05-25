@@ -1,6 +1,6 @@
 {
   "name": "@ittybit/sdk",
-  "version": "0.0.1098",
+  "version": "0.1.0",
   "description": "Ittybit interaction api.. Please refer to ittybit.com for more information",
   "main": "index.js",
   "files": [
