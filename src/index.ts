@@ -187,7 +187,7 @@ export class Ittybit {
   async uploadVideo(pathToVideo: string) {
     try {
       const uploadVideo = (await this.upload(this.endpoint.video.upload, pathToVideo, 'video')) as any;
-      return uploadVideo.video_id;
+      return uploadVideo.id;
     } catch (e) {
       throw new Error(e);
     }
